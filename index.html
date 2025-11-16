@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Board Demo</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f5f5;
+      }
+
+      header {
+        background: #1e90ff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 28px;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 900px;
+        margin: auto;
+        margin-top: 30px;
+      }
+
+      .job-card {
+        background: white;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: 0.2s;
+      }
+
+      .job-card:hover {
+        transform: scale(1.02);
+      }
+
+      .btn {
+        background: #1e90ff;
+        color: white;
+        padding: 10px 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: #0b6ad0;
+      }
+
+      /* Popup */
+      .popup-bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-box {
+        background: white;
+        padding: 25px;
+        width: 90%;
+        max-width: 450px;
+        border-radius: 10px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+
+      .close-btn {
+        background: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>JOB BOARD DEMO</header>
+
+    <div class="container">
+      <h2>Featured Jobs</h2>
+
+      <div class="job-card">
+        <h3>Front-End Developer</h3>
+        <p><strong>Company:</strong> TechWorld</p>
+        <p><strong>Location:</strong> Remote</p>
+        <button
+          class="btn"
+          onclick="openJobDetails('Front-End Developer', 'TechWorld', 'Remote', 'Build UI components using React.js, HTML, CSS.')"
+        >
+          View Details
+        </button>
+      </div>
+
+      <div class="job-card">
+        <h3>Software Engineer</h3>
+        <p><strong>Company:</strong> CodeLabs</p>
+        <p><strong>Location:</strong> India</p>
+        <button
+          class="btn"
+          onclick="openJobDetails('Software Engineer', 'CodeLabs', 'India', 'Develop backend APIs and services using Node.js.')"
+        >
+          View Details
+        </button>
+      </div>
+
+      <div class="job-card">
+        <h3>UI/UX Designer</h3>
+        <p><strong>Company:</strong> Creative Minds</p>
+        <p><strong>Location:</strong> USA</p>
+        <button
+          class="btn"
+          onclick="openJobDetails('UI/UX Designer', 'Creative Minds', 'USA', 'Create UI designs and user experience flows.')"
+        >
+          View Details
+        </button>
+      </div>
+    </div>
+
+    <!-- Job Details Popup -->
+    <div class="popup-bg" id="popup">
+      <div class="popup-box">
+        <h2 id="jobTitle"></h2>
+        <p><strong>Company:</strong> <span id="jobCompany"></span></p>
+        <p><strong>Location:</strong> <span id="jobLocation"></span></p>
+        <p id="jobDescription"></p>
+
+        <button class="btn" onclick="openApply()">Apply Now</button>
+        <button class="btn close-btn" onclick="closePopup()">Close</button>
+      </div>
+    </div>
+
+    <!-- Apply Popup -->
+    <div class="popup-bg" id="applyPopup">
+      <div class="popup-box">
+        <h2>Apply for Job</h2>
+
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <input type="file" />
+        <textarea rows="4" placeholder="Write a short message..."></textarea>
+
+        <button class="btn">Submit Application</button>
+        <button class="btn close-btn" onclick="closeApply()">Cancel</button>
+      </div>
+    </div>
+
+    <script>
+      function openJobDetails(title, company, location, description) {
+        document.getElementById("jobTitle").innerText = title;
+        document.getElementById("jobCompany").innerText = company;
+        document.getElementById("jobLocation").innerText = location;
+        document.getElementById("jobDescription").innerText = description;
+
+        document.getElementById("popup").style.display = "flex";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+      }
+
+      function openApply() {
+        document.getElementById("applyPopup").style.display = "flex";
+      }
+
+      function closeApply() {
+        document.getElementById("applyPopup").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
